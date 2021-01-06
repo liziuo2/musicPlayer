@@ -1,16 +1,13 @@
 <template>
   <div class="comment_list">
     <div>
-      <dl>
+      <dl v-for="(item, index) in list" :key="index">
         <dt>
-          <img
-            src="https://p3.music.126.net/2cwPUmMgb6XImVwNy-FcIw==/109951163863553426.jpg"
-            alt=""
-          />
+          <img :src="item.user.avatarUrl" alt="" />
         </dt>
-        <dd class="name">Teoeo_</dd>
+        <dd class="name">{{ item.user.nickname }}</dd>
         <dd class="detail">
-          你没听出来汪老师一直在配合刘乐瑶唱吗，他大部分时间在给刘乐瑶和音，而且唱的是女生的key，因为是孩子们的节目，他想让孩子更多的展现自己的优点，所以汪老师尽量地配合刘乐瑶的声音唱，如果是汪苏泷一个人唱，他不会这样唱的。
+          {{ item.content }}
         </dd>
       </dl>
     </div>
@@ -18,7 +15,21 @@
 </template>
 
 <script>
-export default {};
+import bus from "../common/bus";
+export default {
+  data() {
+    return {
+      list: [],
+    };
+  },
+  mounted() {
+    // $on在vue中就是提供监听事件的方法
+    // 参数1:事件名 参数2:函数
+    bus.$on("brother", (val) => {
+      this.list = val;
+    });
+  },
+};
 </script>
 
 <style>

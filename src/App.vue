@@ -17,7 +17,7 @@
         </div>
 
         <!-- 导入评论组件 -->
-        <comments />
+        <comments ref="comments" />
       </div>
       <div class="audio_con">
         <audio controls autoplay loop class="myaudio" :src="url"></audio>
@@ -37,6 +37,7 @@ export default {
       msg: "",
       url: "",
       imgSrc: "",
+      id: "",
     };
   },
   methods: {
@@ -190,7 +191,7 @@ dd {
   padding: 10px;
   list-style: none;
   background: url("../assets/line.png") left center no-repeat;
-  overflow: hidden;
+  overflow: auto;
   position: relative;
 }
 
