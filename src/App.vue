@@ -10,17 +10,33 @@
         <list ref="song" />
 
         <div class="player_con">
-          <img src="../assets/player_bar.png" class="play_bar playing" />
+          <img
+            src="../assets/player_bar.png"
+            class="play_bar"
+            :class="{ playing: flag }"
+          />
           <!-- 黑胶碟片 -->
-          <img src="../assets/disc.png" class="disc autoRotate playing" />
-          <img :src="imgSrc" class="cover autoRotate playing" />
+          <img
+            src="../assets/disc.png"
+            class="disc autoRotate"
+            :class="{ playing: flag }"
+          />
+          <img :src="imgSrc" class="cover autoRotate" />
         </div>
 
         <!-- 导入评论组件 -->
         <comments ref="comments" />
       </div>
       <div class="audio_con">
-        <audio controls autoplay loop class="myaudio" :src="url"></audio>
+        <audio
+          controls
+          autoplay
+          loop
+          class="myaudio"
+          :src="url"
+          @play="flag = true"
+          @pause="flag = false"
+        ></audio>
       </div>
     </div>
   </div>
@@ -38,6 +54,7 @@ export default {
       url: "",
       imgSrc: "",
       id: "",
+      flag: false,
     };
   },
   methods: {
