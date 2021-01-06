@@ -20,7 +20,7 @@
         <comments />
       </div>
       <div class="audio_con">
-        <audio controls autoplay loop class="myaudio" :src="src"></audio>
+        <audio controls autoplay loop class="myaudio" :src="url"></audio>
       </div>
     </div>
   </div>
@@ -35,13 +35,14 @@ export default {
   data() {
     return {
       msg: "",
-      src: "",
+      url: "",
       imgSrc: "",
     };
   },
   methods: {
     search() {
       axios({
+        // 获取音乐列表
         url: "http://www.dongh5.com:9000/search",
         method: "get",
         params: { keywords: this.msg },
