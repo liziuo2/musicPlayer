@@ -52,7 +52,8 @@ export default {
     return {
       msg: "",
       url: "",
-      imgSrc: "",
+      // 变量中的路径转成打包的路径要加require
+      imgSrc: require("../assets/cover.png"),
       id: "",
       flag: false,
     };
